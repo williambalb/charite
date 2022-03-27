@@ -102,6 +102,7 @@ $app->register(App\Base\Providers\CatchAllOptionsRequestsProvider::class);
  $app->register(App\Base\Providers\EventServiceProvider::class);
  $app->register(App\Items\Providers\ItemServiceProvider::class);
  $app->register(App\Categories\Providers\CategoryServiceProvider::class);
+ $app->register(App\Users\Providers\UserServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

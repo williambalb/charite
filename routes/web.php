@@ -41,3 +41,14 @@ $router->group(['prefix' => 'categories'], function () use ($router) {
 //    $router->post('/import', '\App\Categories\Http\Controllers\CategoryController@storeMany');
 //    $router->get('/search', '\App\Categories\Http\Controllers\CategoryController@search');
 });
+
+$router->group(['prefix' => 'users'], function () use ($router) {
+    $router->get('/', '\App\Users\Http\Controllers\UserController@index');
+    $router->post('/', '\App\Users\Http\Controllers\UserController@store');
+    $router->get('/{id}', '\App\Users\Http\Controllers\UserController@find');
+    $router->delete('/{id}', '\App\Users\Http\Controllers\UserController@delete');
+//    $router->post('/delete', '\App\Users\Http\Controllers\UserController@deleteMany');
+    $router->put('/{id}', '\App\Users\Http\Controllers\UserController@update');
+//    $router->post('/import', '\App\Users\Http\Controllers\UserController@storeMany');
+//    $router->get('/search', '\App\Users\Http\Controllers\UserController@search');
+});
