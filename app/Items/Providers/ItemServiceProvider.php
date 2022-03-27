@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Items\Providers;
 
 use App\Items\Models\ItemRepositoryInterface;

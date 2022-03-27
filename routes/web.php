@@ -3,6 +3,7 @@
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 use App\Items\Http\Controllers\ItemController;
+use App\Categories\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,15 @@ $router->group(['prefix' => 'items'], function () use ($router) {
     $router->put('/{id}', '\App\Items\Http\Controllers\ItemController@update');
 //    $router->post('/import', '\App\Items\Http\Controllers\ItemController@storeMany');
 //    $router->get('/search', '\App\Items\Http\Controllers\ItemController@search');
+});
+
+$router->group(['prefix' => 'categories'], function () use ($router) {
+    $router->get('/', '\App\Categories\Http\Controllers\CategoryController@index');
+    $router->post('/', '\App\Categories\Http\Controllers\CategoryController@store');
+    $router->get('/{id}', '\App\Categories\Http\Controllers\CategoryController@find');
+    $router->delete('/{id}', '\App\Categories\Http\Controllers\CategoryController@delete');
+//    $router->post('/delete', '\App\Categories\Http\Controllers\CategoryController@deleteMany');
+    $router->put('/{id}', '\App\Categories\Http\Controllers\CategoryController@update');
+//    $router->post('/import', '\App\Categories\Http\Controllers\CategoryController@storeMany');
+//    $router->get('/search', '\App\Categories\Http\Controllers\CategoryController@search');
 });
