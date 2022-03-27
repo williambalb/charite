@@ -2,29 +2,30 @@
 
 declare(strict_types=1);
 
-namespace App\Categories\Http\Controllers;
+namespace App\Users\Http\Controllers;
 
 use App\Base\Http\Controllers\Controller;
-use App\Categories\Models\CategoryRepositoryInterface;
+use App\Users\Models\UserRepositoryInterface;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class CategoryController extends Controller
+class UserController extends Controller
 {
-    private CategoryRepositoryInterface $categoryRepository;
+    private UserRepositoryInterface $userRepository;
 
-    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
-        $this->categoryRepository = $categoryRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function index(Request $request): JsonResponse
     {
         try {
             $limit = $request->get('limit') ?? 20;
-            $categories = $this->categoryRepository->all((int) $limit);
-            return response()->json(['categories' => $categories, 'message' => 'success']);
+            $users = $this->userRepository->all((int) $limit);
+            return response()->json(['users' => $users, 'message' => 'success']);
         } catch (Exception $exception) {
             return response()->json(['error' => 'Error: ' . $exception->getMessage()]);
         }
@@ -33,8 +34,9 @@ class CategoryController extends Controller
     public function store(Request $request): JsonResponse
     {
         try {
-            $categoryData = $request->all();
-            $this->categoryRepository->create($categoryData);
+            $userData = $request->all();
+            $userData['password'] = Hash::make($userData['password']);
+            $this->userRepository->create($userData);
             return response()->json(['message' => 'success']);
         } catch (Exception $exception) {
             return response()->json(['error' => 'Error: ' . $exception->getMessage()]);
@@ -44,8 +46,8 @@ class CategoryController extends Controller
     public function find(int $id): JsonResponse
     {
         try {
-            $category = $this->categoryRepository->find($id);
-            return response()->json(['category' => $category, 'message' => 'success']);
+            $user = $this->userRepository->find($id);
+            return response()->json(['user' => $user, 'message' => 'success']);
         } catch (Exception $exception) {
             return response()->json(['error' => 'Error: ' . $exception->getMessage()]);
         }
@@ -54,7 +56,7 @@ class CategoryController extends Controller
     public function delete(int $id): JsonResponse
     {
         try {
-            $result = $this->categoryRepository->delete($id);
+            $result = $this->userRepository->delete($id);
             if ($result) {
                 return response()->json(['message' => 'success']);
             } else {
@@ -67,9 +69,10 @@ class CategoryController extends Controller
 
     public function update(int $id, Request $request): JsonResponse
     {
-        $categoryData = json_decode($request->getContent(), true);
+        $userData = json_decode($request->getContent(), true);
+        $userData['password'] = Hash::make($userData['password']);
         try {
-            $result = $this->categoryRepository->update($id, $categoryData);
+            $result = $this->userRepository->update($id, $userData);
             if ($result) {
                 return response()->json(['message' => 'success']);
             } else {
