@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable(false);
             $table->string('document')->unique()->nullable(false);
             $table->unsignedBigInteger('role_id')->nullable(false);
-            $table->unsignedBigInteger('address_id')->nullable(false);
             $table->timestamps();
         });
     }

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Users\Models;
 
+use App\Users\Models\Addresses\Address;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Model
 {
@@ -14,5 +16,10 @@ class User extends Model
      * @var string
      */
     protected $table = 'users';
-    protected $fillable = ['name', 'email', 'password', 'document', 'role_id', 'address_id'];
+    protected $fillable = ['name', 'email', 'password', 'document', 'role_id'];
+
+    public function address(): HasMany
+    {
+        return $this->hasMany(Address::class);
+    }
 }

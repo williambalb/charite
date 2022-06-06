@@ -52,3 +52,14 @@ $router->group(['prefix' => 'users'], function () use ($router) {
 //    $router->post('/import', '\App\Users\Http\Controllers\UserController@storeMany');
 //    $router->get('/search', '\App\Users\Http\Controllers\UserController@search');
 });
+
+$router->group(['prefix' => 'address'], function () use ($router) {
+    $router->get('/', '\App\Users\Http\Controllers\Addresses\AddressController@index');
+    $router->post('/', '\App\Users\Http\Controllers\Addresses\AddressController@store');
+    $router->get('/{id}', '\App\Users\Http\Controllers\Addresses\AddressController@find');
+    $router->delete('/{id}', '\App\Users\Http\Controllers\Addresses\AddressController@delete');
+//    $router->post('/delete', '\App\Users\Http\Controllers\Addresses\AddressController@deleteMany');
+    $router->put('/{id}', '\App\Users\Http\Controllers\Addresses\AddressController@update');
+//    $router->post('/import', '\App\Users\Http\Controllers\Addresses\AddressController@storeMany');
+//    $router->get('/search', '\App\Users\Http\Controllers\Addresses\AddressController@search');
+});
