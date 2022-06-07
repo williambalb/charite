@@ -53,7 +53,7 @@ $router->group(['prefix' => 'users'], function () use ($router) {
 //    $router->get('/search', '\App\Users\Http\Controllers\UserController@search');
 });
 
-$router->group(['prefix' => 'address'], function () use ($router) {
+$router->group(['prefix' => 'addresses'], function () use ($router) {
     $router->get('/', '\App\Users\Http\Controllers\Addresses\AddressController@index');
     $router->post('/', '\App\Users\Http\Controllers\Addresses\AddressController@store');
     $router->get('/{id}', '\App\Users\Http\Controllers\Addresses\AddressController@find');
@@ -64,7 +64,7 @@ $router->group(['prefix' => 'address'], function () use ($router) {
 //    $router->get('/search', '\App\Users\Http\Controllers\Addresses\AddressController@search');
 });
 
-$router->group(['prefix' => 'address'], function () use ($router) {
+$router->group(['prefix' => 'roles'], function () use ($router) {
     $router->get('/', '\App\Roles\Http\Controllers\RoleController@index');
     $router->post('/', '\App\Roles\Http\Controllers\RoleController@store');
     $router->get('/{id}', '\App\Roles\Http\Controllers\RoleController@find');
@@ -72,5 +72,16 @@ $router->group(['prefix' => 'address'], function () use ($router) {
 //    $router->post('/delete', '\App\Roles\Http\Controllers\RoleController@deleteMany');
     $router->put('/{id}', '\App\Roles\Http\Controllers\RoleController@update');
 //    $router->post('/import', '\App\Roles\Http\Controllers\RoleController@storeMany');
+//    $router->get('/search', '\App\Roles\Http\Controllers\RoleController@search');
+});
+
+$router->group(['prefix' => 'permissions'], function () use ($router) {
+    $router->get('/', '\App\Permission\Http\Controllers\PermissionController@index');
+    $router->post('/', '\App\Permission\Http\Controllers\PermissionController@store');
+    $router->get('/{id}', '\App\Permission\Http\Controllers\PermissionController@find');
+    $router->delete('/{id}', '\App\Permission\Http\Controllers\PermissionController@delete');
+//    $router->post('/delete', '\App\Permission\Http\Controllers\PermissionController@deleteMany');
+    $router->put('/{id}', '\App\Permission\Http\Controllers\PermissionController@update');
+//    $router->post('/import', '\App\Permission\Http\Controllers\PermissionController@storeMany');
 //    $router->get('/search', '\App\Roles\Http\Controllers\RoleController@search');
 });
