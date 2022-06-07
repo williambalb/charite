@@ -105,6 +105,7 @@ $app->register(App\Base\Providers\CatchAllOptionsRequestsProvider::class);
  $app->register(App\Categories\Providers\CategoryServiceProvider::class);
  $app->register(App\Users\Providers\UserServiceProvider::class);
  $app->register(App\Users\Providers\AddressServiceProvider::class);
+ $app->register(App\Roles\Providers\RoleServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
