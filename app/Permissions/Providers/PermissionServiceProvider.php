@@ -14,4 +14,9 @@ class PermissionServiceProvider extends ServiceProvider
     {
         $this->app->bind(PermissionRepositoryInterface::class, PermissionRepository::class);
     }
+
+    public function boot()
+    {
+        //
+    }
 }

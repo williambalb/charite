@@ -14,4 +14,9 @@ class RoleServiceProvider extends ServiceProvider
     {
         $this->app->bind(RoleRepositoryInterface::class, RoleRepository::class);
     }
+
+    public function boot()
+    {
+        //
+    }
 }
