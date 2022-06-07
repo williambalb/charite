@@ -45,7 +45,7 @@ class RoleController extends Controller
     {
         try {
             $role = $this->roleRepository->find($id);
-            return response()->json(['address' => $role, 'message' => 'success']);
+            return response()->json(['role' => $role, 'message' => 'success']);
         } catch (Exception $exception) {
             return response()->json(['error' => 'Error: ' . $exception->getMessage()]);
         }

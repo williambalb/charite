@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Permissions\Models;
 
+use App\Roles\Models\RolePermission;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Permission extends Model
 {
@@ -15,4 +17,9 @@ class Permission extends Model
      */
     protected $table = 'permissions';
     protected $fillable = ['name'];
+
+    public function rolePermission(): HasMany
+    {
+        return $this->hasMany(RolePermission::class);
+    }
 }
