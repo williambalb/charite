@@ -42,6 +42,8 @@ $router->group(['prefix' => 'categories'], function () use ($router) {
 //    $router->get('/search', '\App\Categories\Http\Controllers\CategoryController@search');
 });
 
+$router->post('login', '\App\Base\Http\Controllers\AuthenticationController@authenticate');
+
 $router->group(['prefix' => 'users'], function () use ($router) {
     $router->get('/', '\App\Users\Http\Controllers\UserController@index');
     $router->post('/', '\App\Users\Http\Controllers\UserController@store');

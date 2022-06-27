@@ -9,6 +9,7 @@ use App\Users\Models\UserRepositoryInterface;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -18,14 +19,16 @@ class UserController extends Controller
     public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
+        $this->middleware('auth');
     }
 
     public function index(Request $request): JsonResponse
     {
         try {
+            $auth = Auth::user();
             $limit = $request->get('limit') ?? 20;
             $users = $this->userRepository->all((int) $limit);
-            return response()->json(['users' => $users, 'message' => 'success']);
+            return response()->json(['users' => $users, 'data' => $auth, 'message' => 'success']);
         } catch (Exception $exception) {
             return response()->json(['error' => 'Error: ' . $exception->getMessage()]);
         }
