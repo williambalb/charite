@@ -45,11 +45,5 @@ class AuthServiceProvider extends ServiceProvider
 
             return null;
         });
-
-//        $this->app['auth']->viaRequest('api', function ($request) {
-//            if ($request->input('api_token')) {
-//                return User::where('api_token', $request->input('api_token'))->first();
-//            }
-//        });
     }
 }

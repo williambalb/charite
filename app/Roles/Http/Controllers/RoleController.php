@@ -17,6 +17,7 @@ class RoleController extends Controller
     public function __construct(RoleRepositoryInterface $roleRepository)
     {
         $this->roleRepository = $roleRepository;
+        $this->middleware('auth');
     }
 
     public function index(Request $request): JsonResponse

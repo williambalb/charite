@@ -20,6 +20,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->post('login', '\App\Base\Http\Controllers\AuthenticationController@authenticate');
+
 $router->group(['prefix' => 'items'], function () use ($router) {
     $router->get('/', '\App\Items\Http\Controllers\ItemController@index');
     $router->post('/', '\App\Items\Http\Controllers\ItemController@store');
@@ -41,8 +43,6 @@ $router->group(['prefix' => 'categories'], function () use ($router) {
 //    $router->post('/import', '\App\Categories\Http\Controllers\CategoryController@storeMany');
 //    $router->get('/search', '\App\Categories\Http\Controllers\CategoryController@search');
 });
-
-$router->post('login', '\App\Base\Http\Controllers\AuthenticationController@authenticate');
 
 $router->group(['prefix' => 'users'], function () use ($router) {
     $router->get('/', '\App\Users\Http\Controllers\UserController@index');
