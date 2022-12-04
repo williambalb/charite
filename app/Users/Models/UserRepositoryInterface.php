@@ -8,5 +8,5 @@ use App\Base\Models\BaseRepositoryInterface;
 
 interface UserRepositoryInterface extends BaseRepositoryInterface
 {
-
+    public function getUserByEmail(string $email): User;
 }

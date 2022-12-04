@@ -20,6 +20,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->post('login', '\App\Base\Http\Controllers\AuthenticationController@authenticate');
+
 $router->group(['prefix' => 'items'], function () use ($router) {
     $router->get('/', '\App\Items\Http\Controllers\ItemController@index');
     $router->post('/', '\App\Items\Http\Controllers\ItemController@store');
