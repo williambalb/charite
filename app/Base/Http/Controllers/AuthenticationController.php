@@ -30,12 +30,13 @@ class AuthenticationController extends Controller
 
         if (Hash::check($request->input('password'), $user->password)) {
             $apikey = base64_encode(Str::random(40));
-
-            $this->userRepository->update($user->id, ['api_key' => $apikey]);
+            $user = $this->userRepository->find($user->id);
+            $user->api_key = $apikey;
+            $user->save();
 
             return response()->json(['status' => 'success', 'api_key' => $apikey]);
         } else {
-            return response()->json(['status' => 'fail', 401]);
+            return response()->json(['status' => 'fail'], 401);
         }
     }
 }
