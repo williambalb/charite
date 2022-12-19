@@ -17,7 +17,7 @@ class ItemController extends Controller
     public function __construct(ItemRepositoryInterface $itemRepository)
     {
         $this->itemRepository = $itemRepository;
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     public function index(Request $request): JsonResponse

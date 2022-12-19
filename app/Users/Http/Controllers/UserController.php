@@ -19,7 +19,7 @@ class UserController extends Controller
     public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     public function index(Request $request): JsonResponse
