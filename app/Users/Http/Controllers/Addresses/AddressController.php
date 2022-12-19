@@ -17,7 +17,7 @@ class AddressController extends Controller
     public function __construct(AddressRepositoryInterface $addressRepository)
     {
         $this->addressRepository = $addressRepository;
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     public function index(Request $request): JsonResponse

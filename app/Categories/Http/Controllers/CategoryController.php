@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function __construct(CategoryRepositoryInterface $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     public function index(Request $request): JsonResponse
