@@ -21,6 +21,7 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('login', '\App\Base\Http\Controllers\AuthenticationController@authenticate');
+$router->post('register', '\App\Base\Http\Controllers\AuthenticationController@register');
 
 $router->group(['prefix' => 'items'], function () use ($router) {
     $router->get('/', '\App\Items\Http\Controllers\ItemController@index');
