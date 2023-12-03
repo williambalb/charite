@@ -44,13 +44,16 @@ class AuthenticationController extends Controller
     public function register(Request $request): JsonResponse
     {
         $this->validate($request, [
-            'name' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8'
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required|same:password'
         ]);
         
         $user = [
-            'name' => $request->get('name'),
+            'firstname' => $request->get('firstname'),
+            'lastname' => $request->get('lastname'),
             'email' => $request->get('email'),
             'document' => $request->get('document'),
             'password' => Hash::make($request->get('password')),
