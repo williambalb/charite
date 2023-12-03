@@ -23,7 +23,7 @@ class User extends Model implements Authenticatable
      * @var string
      */
     protected $table = 'users';
-    protected $fillable = ['name', 'email', 'password', 'document', 'role_id'];
+    protected $fillable = ['firstname', 'lastname', 'email', 'password', 'document', 'role_id'];
     protected $hidden = ['password', 'api_key'];
 
     public function address(): HasMany
